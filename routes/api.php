@@ -1,3 +1,5 @@
+<?php
+
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\AsignaturaController;
