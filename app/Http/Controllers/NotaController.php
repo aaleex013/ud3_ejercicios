@@ -22,8 +22,8 @@ class NotaController extends Controller
     public function store(Request $request): JsonResponse
     {
         try{
-            $nota = Nota::create($request->all());
-            return response()->json($nota, 201);
+            $notas = Nota::create($request->all());
+            return response()->json($notas, 201);
         }catch(\Exception $e){
             return response()->json(['message'=>'error al crear la nota'], 500);
         }
@@ -34,12 +34,12 @@ class NotaController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $nota = Nota::find($id);
+        $notas = Nota::find($id);
 
-        if (!$nota) {
+        if (!$notas) {
             return response()->json(['message' => 'nota no encontrada'], 404);
     }
-        return response()->json($nota, 200);
+        return response()->json($notas, 200);
     }
 
     /**
@@ -47,17 +47,17 @@ class NotaController extends Controller
      */
     public function update(Request $request, int $id): JsonResponse
     {
-        $nota = Nota::find($id);
+        $notas = Nota::find($id);
 
-    if (!$nota) {
+    if (!$notas) {
         return response()->json(['message' => 'nota no encontrada'], 404);
     }
     $nota = Nota::find($id);
-    if(!$nota){
+    if(!$notas){
         return response()->json(['message' => 'nota no encontrada'], 404);
     }else{
-        $nota->update($request->only('alumno_id', 'asignatura_id', 'nota'));
-        return response()->json($nota, 200);
+        $notas->update($request->only('alumno_id', 'asignatura_id', 'nota'));
+        return response()->json($notas, 200);
     }
     }
 
@@ -66,13 +66,13 @@ class NotaController extends Controller
      */
     public function destroy(int $id): JsonResponse
     {
-        $nota = Nota::find($id);
+        $notas = Nota::find($id);
 
-    if (!$nota) {
+    if (!$notas) {
         return response()->json(['message' => 'Nota no encontrada'], 404);
     }
 
-    $nota->delete();
+    $notas->delete();
 
     return response()->json(['message' => 'Nota eliminada'], 200);
     }

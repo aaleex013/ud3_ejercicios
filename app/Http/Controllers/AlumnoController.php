@@ -14,7 +14,7 @@ class AlumnoController extends Controller
      */
     public function index(): JsonResponse
     {
-        $alumnos = Alumno::all();
+        
 	return response()->json(Alumno::all());
     }
 
@@ -24,8 +24,8 @@ class AlumnoController extends Controller
     public function store(Request $request): JsonResponse
     {
         try{
-            $alumno = Alumno::create($request->all());
-            return response()->json($alumno, 201);
+            $alumnos = Alumno::create($request->all());
+            return response()->json($alumnos, 201);
         }catch(\Exception $e){
             return response()->json(['message'=>'error al crear al alumno'], 500);
         }
@@ -36,13 +36,13 @@ class AlumnoController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $alumno = Alumno::find($id);
+        $alumnos = Alumno::find($id);
 
-        if (!$alumno) {
+        if (!$alumnos) {
             return response()->json(['message' => 'Alumno no encontrado'], 404);
         }
     
-        return response()->json($alumno, 200);
+        return response()->json($alumnos, 200);
     }
 
     /**
@@ -50,12 +50,12 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, int $id): JsonResponse
     {
-        $alumno = Alumno::find($id);
-        if(!$alumno){
+        $alumnos = Alumno::find($id);
+        if(!$alumnos){
             return response()->json(['message' => 'Alumno no encontrado'], 404);
         }else{
-            $alumno->update($request->only('nombre', 'email'));
-            return response()->json($alumno, 200);
+            $alumnos->update($request->only('nombre', 'email'));
+            return response()->json($alumnos, 200);
         }
     }
 
@@ -64,13 +64,13 @@ class AlumnoController extends Controller
      */
     public function destroy(int$id): JsonResponse
     {
-        $alumno = Alumno::find($id);
+        $alumnos = Alumno::find($id);
 
-    if (!$alumno) {
+    if (!$alumnos) {
         return response()->json(['message' => 'Alumno no encontrado'], 404);
     }
 
-    $alumno->delete();
+    $alumnos->delete();
 
     return response()->json(['message' => 'Alumno eliminado'], 200);
     }

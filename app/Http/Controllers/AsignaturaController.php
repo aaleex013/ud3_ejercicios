@@ -22,8 +22,8 @@ class AsignaturaController extends Controller
     public function store(Request $request): JsonResponse
     {
         try{
-            $asignatura = Asignatura::create($request->all());
-            return response()->json($asignatura, 201);
+            $asignaturas = Asignatura::create($request->all());
+            return response()->json($asignaturas, 201);
         }catch(\Exception $e){
             return response()->json(['message'=>'error al crear la asignatura'], 500);
         }
@@ -34,13 +34,13 @@ class AsignaturaController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $asignatura = Asignatura::find($id);
+        $asignaturas = Asignatura::find($id);
 
-    if (!$asignatura) {
+    if (!$asignaturas) {
         return response()->json(['message' => 'Asignatura no encontrada'], 404);
     }
 
-    return response()->json($asignatura, 200);
+    return response()->json($asignaturas, 200);
     }
 
     /**
@@ -48,12 +48,12 @@ class AsignaturaController extends Controller
      */
     public function update(Request $request, int $id): JsonResponse
     {
-        $asignatura = Asignatura::find($id);
-        if(!$asignatura){
+        $asignaturas = Asignatura::find($id);
+        if(!$asignaturas){
             return response()->json(['message' => 'asigantura no encontrada'], 404);
         }else{
-            $asignatura->update($request->only('nombre', 'descripcion'));
-            return response()->json($asignatura, 200);
+            $asignaturas->update($request->only('nombre', 'descripcion'));
+            return response()->json($asignaturas, 200);
         }
     }
 
@@ -62,13 +62,13 @@ class AsignaturaController extends Controller
      */
     public function destroy(int $id): JsonResponse
     {
-        $asignatura = Asignatura::find($id);
+        $asignaturas = Asignatura::find($id);
 
-    if (!$asignatura) {
+    if (!$asignaturas) {
         return response()->json(['message' => 'Asignatura no encontrada'], 404);
     }
 
-    $asignatura->delete();
+    $asignaturas->delete();
 
     return response()->json(['message' => 'Asignatura eliminada'], 200);
     }
