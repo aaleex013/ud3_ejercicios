@@ -3,8 +3,12 @@
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\AsignaturaController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('alumnos', AlumnoController::class);
-Route::apiResource('notas', NotaController::class);
-Route::apiResource('asignaturas', AsignaturaController::class);
+Route::apiResources(['alumnos'=> AlumnoController::class]);
+Route::apiResources(['notas'=> NotaController::class]);
+Route::apiResources(['asignaturas'=> AsignaturaController::class]);
+Route::apiResource(['perfil'=> PerfilController::class]);
+Route::apiResource(['posts'=> PostController::class]);

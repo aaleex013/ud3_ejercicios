@@ -15,25 +15,34 @@ class AlumnosTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('alumnos')->insert([
-    [
-        'nombre' => 'Juan Pérez',
-        'email' => 'juan.perez333@gmail.com',
-        'created_at' => Carbon::now(),
-        'updated_at' => Carbon::now(),
-    ],
-    [
-        'nombre' => 'María González',
-        'email' => 'maria.gonzalez333@gmail.com',
-        'created_at' => Carbon::now(),
-        'updated_at' => Carbon::now(),
-    ],
-    [
-        'nombre' => 'Carlos López',
-        'email' => 'carlos.lopez333@gmail.com',
-        'created_at' => Carbon::now(),
-        'updated_at' => Carbon::now(),
-    ],
-    ]);
+        DB::table('alumnos')->updateOrInsert(
+            ['email' => 'juan.perez33367@gmail.com'], // Condición de búsqueda
+            [
+                'nombre' => 'Juan Pérez',
+                'email' => 'juan.perez33367@gmail.com',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
+        );
+    
+        DB::table('alumnos')->updateOrInsert(
+            ['email' => 'maria.gonzalez33367@gmail.com'],
+            [
+                'nombre' => 'María González',
+                'email' => 'maria.gonzalez33367@gmail.com',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
+        );
+    
+        DB::table('alumnos')->updateOrInsert(
+            ['email' => 'carlos.lopez33367@gmail.com'],
+            [
+                'nombre' => 'Carlos López',
+                'email' => 'carlos.lopez33367@gmail.com',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
+        );
     }
 }
