@@ -11,7 +11,7 @@ class Perfil extends Model
     public $timestamps = true;
 
     // relacion inversa con Alumno
-    public function alumno()
+    public function alumnos()
     {
         return $this->belongsTo(Alumno::class, 'usuario_id');
     }

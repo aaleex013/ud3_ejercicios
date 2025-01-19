@@ -11,6 +11,12 @@ class Alumno extends Model
     protected $fillable = ['nombre', 'email'];
     public $timestamps = false;
 
+    public function asignaturas()
+    {
+        return $this->belongsToMany(Asignatura::class, 'notas')->withPivot('nota')->withTimestamps();
+    }
+
+
     // relacion uno a muchos (1:N) con Post
     public function posts()
     {
